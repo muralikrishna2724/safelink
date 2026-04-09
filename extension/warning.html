@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeLink - Malicious URL Blocked</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --danger: #ef4444;
+            --danger-glow: rgba(239, 68, 68, 0.4);
+            --card-bg: rgba(30, 41, 59, 0.8);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-image: radial-gradient(circle at 50% 0%, #1e1b4b 0%, var(--bg-color) 70%);
+        }
+
+        .container {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 3rem;
+            max-width: 600px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 40px var(--danger-glow);
+            animation: slideIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        @keyframes slideIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .icon-wrapper {
+            width: 80px;
+            height: 80px;
+            background: rgba(239, 68, 68, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            border: 2px solid var(--danger);
+            box-shadow: 0 0 20px var(--danger-glow);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(239, 68, 68, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+        }
+
+        .icon-wrapper svg {
+            width: 40px;
+            height: 40px;
+            color: var(--danger);
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+        }
+
+        p {
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        #urlDisplay {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 1rem;
+            border-radius: 8px;
+            word-break: break-all;
+            color: #ef4444;
+            font-family: monospace;
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+        }
+
+        .actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        button {
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: inherit;
+        }
+
+        .btn-primary {
+            background-color: var(--text-main);
+            color: var(--bg-color);
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #e2e8f0;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--text-muted);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+            color: var(--text-main);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="icon-wrapper">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+            </svg>
+        </div>
+        <h1>Malicious Website Blocked</h1>
+        <p>SafeLink has prevented you from accessing this page because it has been flagged as a malicious or malware-distributing website by the abuse.ch URLhaus database.</p>
+        
+        <div id="urlDisplay">Loading...</div>
+
+        <div class="actions">
+            <button id="goBackBtn" class="btn-primary">Go Back to Safety</button>
+            <button id="closeTabBtn" class="btn-secondary">Close Tab</button>
+        </div>
+    </div>
+
+    <script src="warning.js"></script>
+</body>
+</html>

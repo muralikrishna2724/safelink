@@ -1,0 +1,31 @@
+{
+  "manifest_version": 3,
+  "name": "SafeLink URLhaus Checker",
+  "version": "1.0",
+  "description": "Checks whether visited URLs are safe or not using the abuse.ch URLhaus API.",
+  "permissions": [
+    "tabs",
+    "storage",
+    "webNavigation"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "SafeLink"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "warning.html",
+        "checking.html"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ]
+}

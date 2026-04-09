@@ -11,7 +11,7 @@
 export async function checkUrl(url) {
   try {
     // Call Netlify function (works in dev via proxy and in production)
-    const endpoint = '/.netlify/functions/check-url';
+    const endpoint = '/api/check-url';
     
     console.log('Calling backend API:', endpoint, 'with URL:', url);
     
